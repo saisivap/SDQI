@@ -1,0 +1,86 @@
+  <nav class="navbar navbar-custom navbar-expand-lg navbar-dark fixed-top bg-dark">
+<!--  <a class="navbar-brand" href="/">Condo And Housing</a>-->
+    <%#= link_to_image("avatar/pic1",root_path) %>
+    <%= link_to root_path do %>
+      <%= image_tag "avatar/pic4.png", class: "some css class here" ,style: "width:70px;height:70px"%>
+    <% end %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <%# if user_signed_in? %>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <% if user_signed_in? %>
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+<!--      <li class="nav-item">-->
+<!--        <a class="nav-link" href="#">Link</a>-->
+<!--      </li>-->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Menu
+        </a>
+        <%if  current_user.admin=='ture' or current_user.role=='security'%>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Maintenance</a>
+            <a class="dropdown-item" href="#">Feedback</a>
+          </div>
+          <%else %>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/complaints/new">Complaint</a>
+<!--            <a class="dropdown-item" href=" /complaint/sharedcomplaint">Shared Complaints</a>-->
+            <%= link_to "Shared Complaints", sharedcomplaints_path,class: "dropdown-item" %>
+            <a class="dropdown-item" href="/solvedComplaints">Solved Complaints</a>
+            <a class="dropdown-item" href="#">Maintenance</a>
+            <a class="dropdown-item" href="#">Booking</a>
+          </div>
+          <%end %>
+
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Profile
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/users/edit">Edit Profile</a>
+          <a class="dropdown-item" href="/users/sign_out" data-method="delete"><i class="sign out alternate icon"></i>LogOut</a>
+        </div>
+      </li>
+      <%else %>
+      <%end %>
+<!--      <li class="nav-item">-->
+<!--        <a class="nav-link disabled" href="#">Disabled</a>-->
+<!--      </li>-->
+    </ul>
+    <%if user_signed_in? %>
+      <form class="form-inline my-2 my-lg-0" style="color: white">
+<!--        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
+<!--        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
+<!--        <span class="oi oi-plus" style="color: white"></span>-->
+<!--        <span class="fi-plus" style="background-color:white "></span>-->
+<!--        <i class="fas fa-heart" style="background-color: white"></i>-->
+        <a href="/notifications" class="btn btn-warning btn-lg active" role="button" aria-pressed="true"> <i class="fa fa-plus-square" style="color: white;font-size: 30px;"></i>&nbsp
+          (<%= Complaint.where("user_id":current_user.id,"solved":false).count%>)
+        </a>&nbsp
+        <%if current_user.image.attached? %>
+
+<!--            <i class="fa fa-plus-square" style="color: white;font-size: 20px;"></i><br>&nbsp-->
+
+          <%#= image_tag(current_user.image, :class=> " rounded-circle",style: "height:50px;width:50px")  %>
+          <%else %>
+          <%end %>
+        <%if current_user.first_name==" " and current_user.last_name=" " %>
+          <%else %>
+
+        <i class="fa fa-heart"  style="font-size: 20px">&nbsp<%=current_user.first_name%><%=current_user.last_name %></i>
+          <%end %>
+      </form>
+      <%else %>
+    <form class="form-inline my-2 my-lg-0">
+      <li><a class="btn btn-outline-danger" href="/users/sign_up" role="button" aria-pressed="true">SignUp</a></li>
+      <li><a class="btn btn-outline-success" href="/users/sign_in"  role="button" aria-pressed="true">Login</a></li>
+    </form>
+  </div>
+  <%end %>
+</nav>

@@ -1,35 +1,92 @@
-<p id="notice"><%= notice %></p>
+<!--<p id="notice"><%#= notice %></p>-->
 
-<h1>Complaints</h1>
+<!--<h1>Complaints</h1>-->
 
-<table>
-  <thead>
-  <tr>
-    <th>Description</th>
-    <th>Type</th>
-    <th>Block</th>
-    <th>Floor</th>
-    <th>User</th>
-    <th colspan="3"></th>
-  </tr>
-  </thead>
+<!--<table>-->
+<!--  <thead>-->
+<!--  <tr>-->
+<!--    <th>Description</th>-->
+<!--    <th>Type</th>-->
+<!--    <th>Block</th>-->
+<!--    <th>Floor</th>-->
+<!--    <th>User</th>-->
+<!--    <th colspan="3"></th>-->
+<!--  </tr>-->
+<!--  </thead>-->
 
-  <tbody>
-  <% @complaints.each do |complaint| %>
-    <tr>
-      <td><%= complaint.description %></td>
-      <td><%= complaint.type_of_property %></td>
-      <td><%= complaint.block %></td>
-      <td><%= complaint.floor %></td>
-      <td><%= complaint.user %></td>
-      <td><%= link_to 'Show', complaint %></td>
-      <!--        <td><%#= link_to 'Edit', edit_complaint_path(complaint) %></td>-->
-      <td><%= link_to 'Destroy', complaint, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+<!--  <tbody>-->
+  <%# @complaints.each do |complaint| %>
+<!--    <tr>-->
+<!--      <td><%#= complaint.description %></td>-->
+<!--      <td><%#= complaint.type_of_property %></td>-->
+<!--      <td><%#= complaint.block %></td>-->
+<!--      <td><%#= complaint.floor %></td>-->
+<!--      <td><%#= complaint.user %></td>-->
+<!--      <td><%#= link_to 'Show', complaint %></td>-->
 
-<br>
+      <%#if current_user.id== complaint.user_id%>
+<!--      <td><%#= link_to 'Destroy', complaint, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+        <%#end %>
+<!--    </tr>-->
+  <%# end %>
+<!--  </tbody>-->
+<!--</table>-->
 
-<%= link_to 'New Complaint', new_complaint_path %>
+<!--<br>-->
+
+<%#= link_to 'New Complaint', new_complaint_path %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-1 col-sm-0"></div>
+    <div class="col-lg-10 col-sm-12" style="padding: 3%">
+      <% @complaints.each do |shared| %>
+        <div class="row" style="padding: 2%">
+          <div class="col-lg-12">
+            <div class="row" style="border: 20px solid rgba(150,100,0,0.3);box-shadow:10px 10px 20px rgba(0,0,0,0.2);padding:1%;<% if shared.solved==true %>background-color:rgba(0,100,0,0.1) <%else%> background-color:rgba(255,0,0,0.1)<%end %>">
+              <div class="col-lg-6">
+              <% if shared.user.image.attached? %>
+                <%= image_tag(shared.user.image,:class=> " card-img-top ")  %>
+                <%else%>
+                <%= image_tag("avatar/profile2.png", :class=> " card-img-top ")  %>
+              <%end%>
+               <p style="font-weight: bold"> <%= shared.user.first_name %>(Ticket Id: <%= shared.id %>)</p>
+              </div>
+              <div class="col-lg-6" style="text-align: right">
+                <p style="font-weight: bold"><%= shared.created_at.to_date%> <%= (shared.created_at).to_s(:time)%></p>
+              </div>
+<!--              <div class="row">-->
+                <div class="col-lg-12">
+                  <h5><span style="font-weight: bold">Description:</span> <%= shared.description %></h5>
+<!--                </div>-->
+                <div class="col-lg-12" style="text-align: center">
+                <% if shared.image.attached? %>
+                  <%= image_tag(shared.image,:class=> "rounded img-thumbnail",style: "width:100%,height:100%") %>
+                <%end %>
+                </div>
+                <div class="row" style="padding: 5%">
+<!--                <div class="col-lg-12">-->
+
+                  <div class="col-lg-6" style="text-align: center"><h5>Block: <%= shared.block %></h5></div>
+                  <div class="col-lg-6" style="text-align: center"><h5>Floor: <%= shared.floor %></h5></div>
+<!--                </div>-->
+                </div>
+                  <div class="row">
+                    <div class="col-lg-12" style="text-align: right">
+                      <%if shared.solved_time?%>
+                       <p style="font-weight: bold">Solved Time: <%=  shared.solved_time.to_date%> <%=  shared.solved_time.to_s(:time)%></p>
+                        <%#= shared.id %>
+                      <%end %>
+                    </div>
+                  </div>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      <%end %>
+
+    </div>
+    <div class="col-lg-1 col-sm-0"></div>
+  </div>
+</div>

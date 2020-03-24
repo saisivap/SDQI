@@ -1,0 +1,135 @@
+<div class="row">
+  <div class="col-lg-1 col-sm-0"></div>
+  <div class="col-lg-10 col-sm-12"></div>
+  <div class="col-lg-1 col-sm-0"></div>
+</div>
+
+<p id="notice"><%= notice %></p>
+
+
+<% if user_signed_in? && (current_user.admin=='ture' || current_user.role=="security") %>
+  <%if current_user.admin==true %>
+    <h1>Welome To Condo and Housing </h1>
+      <h1>Hello Admin</h1>
+    <%else %>
+    <h1>Hello <%=current_user.role %></h1>
+    <%end %>
+  <%# @complaints.each do |comp| %>
+<!--    <tr>-->
+<!--      <td><%#= comp.user.first_name + comp.user.last_name %></td>-->
+<!--      <td><<%#= comp.block %>/td>-->
+      <%#if comp.type_of_property=="Private" %>
+<!--        <td>Flat: <%#= comp.floor %></td>-->
+        <%#else %>
+<!--        <td>Floor: <%#= comp.floor %></td>-->
+        <%#end %>
+<!--      <td><%#= comp.description %></td>-->
+<!--      <td><%#= comp.type_of_property %></td>-->
+      <%#= link_to "solve",solve_path(comp.id) %>
+<!--    </tr>-->
+<!--    </br>-->
+    <%#end %>
+  <%#else %>
+<!--  <h1><%#= current_user.first_name %></h1>-->
+  <%#= current_user.role %>
+  <%#= current_user.admin %>
+  <%#= current_user.email %>
+  <%#= current_user.block %>
+
+
+
+
+  <style>
+    span{
+      font-weight: bold;
+    }
+  </style>
+  <div class="container">
+    <div class="row" style="padding: 2%">
+      <div class="col-lg-1 col-sm-0"></div>
+      <div class="col-lg-10 col-sm-12">
+        <h2 style="text-align: center;font-weight: bold;color: rgba(0,0,0,0.5)">Complaints To Solve</h2>
+        <!--      <div class="row">-->
+        <% @complaints.each do |solved| %>
+          <div class="row" style="padding: 4%">
+            <!--           <div class="col-lg-12">-->
+            <div class="col-lg-12">
+              <div class="row" style="border: 10px solid rgba(0,0,0,0.3);padding: 2%;box-shadow: 3px 5px 5px 5px rgba(0,0,0,0.1)">
+                <div class="col-lg-6 col-sm-6" style="text-align: center ;box-shadow: 10px 20px 20px 15px rgba(0,0,0,0.2);padding: 2%;border:1px solid rgba(255,0,255,0.2)">
+                  <% if solved.image.attached? %>
+                    <%= image_tag(solved.image,:class=> "rounded img-thumbnail",style: "width:100%,height:100%;text-align:center;padding-top:3%") %>
+                  <%end %>
+                </div>
+                <div class="col-lg-6 col-sm-6"  style="text-align: left;font-weight: bold;font-size: 20px ">
+                  <div class="col-lg-12" style="text-align: left;padding-top:20% ;padding-bottom: 10%">
+                    <div class="col-lg-12" style="box-shadow: 10px 20px 20px 20px rgba(0,0,0,0.1);padding: 10%">
+                      <h4><span> Ticket Id: </span><%= solved.id %></h4>
+                      <h4><span> Description: </span><%= solved.description %></h4>
+                      <h5><span>Type of Property: </span><%= solved.type_of_property %></h5>
+                      <h5><span>Block: </span><%= solved.block %></h5>
+                      <%if solved.type_of_property == 'Shared' %>
+                        <h3><span>Floor:</span><%= solved.floor %></h3>
+                      <%else %>
+                        <h3><span>Flat:</span><%= solved.floor %></h3>
+                      <%end %>
+                    </div>
+                  </div>
+                  <div class="col-lg-12 col-sm-12">
+                    <%#if Feedback.exists?("complaint_id":solved.id) %>
+<!--                      <p style="color:green">*****Thanks for giving feedback</p>-->
+                      <%= link_to "solve", solve_path(solved.id),class: "btn btn-success"%>
+                    <%#else %>
+                      <%#= link_to "Feedback",new_complaint_feedback_path(solved) ,class: "btn btn-success"%>
+                    <%#end %>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <!--          </div>-->
+          </div>
+
+        <%end%>
+        <!--      </div>-->
+      </div>
+      <div class="col-lg-1 col-sm-0"></div>
+    </div>
+  </div>
+
+<%else %>
+  <div class="container-fluid" id="bg">
+    <div class="row" >
+<!--      <div class="col-lg-0 col-sm-0"></div>-->
+      <div class="col-lg-12 col-sm-12" style="border: 0px solid black;text-align: center ;margin-top:50%; " >
+        <h1 style="font-weight: bold;letter-spacing: 2px">Welome To Condo and Housing </h1>
+        <h3 style="font-weight: bold;letter-spacing: 2px;"><%= current_user.first_name %><%= current_user.last_name %></h3>
+
+      </div>
+<!--      <div class="col-lg-0 col-sm-0"></div>-->
+    </div>
+    <div class="row" style="padding-top: 10%;text-align: center;font-weight: bold">
+      <div class="col-lg-3  col-sm-6 col-xs-12 h" style="text-align: center;padding: 4% ">
+        <h5>Complaint</h5>
+
+        <%=link_to(image_tag("avatar/comp.png",style: "width:100%;height:100%",),new_complaint_path )%>
+      </div>
+      <div class="col-lg-3  col-sm-6 col-xs-12 h" style="padding: 4%">
+        <h5>Shared Complaints</h5>
+        <%= link_to(image_tag("avatar/shared.png",style: "width:100%;height:100%"),sharedcomplaints_path )%>
+      </div>
+      <div class="col-lg-3  col-sm-6 col-xs-12 h" style="padding: 4%">
+        <h5>Solved Complaints</h5>
+        <%= link_to(image_tag("avatar/solved.png",style: "width:100%;height:100%"),solvedComplaints_path )%>
+      </div>
+      <div class="col-lg-3  col-sm-6 col-xs-12 h" style="padding: 4%">
+        <h5>Maintenance</h5>
+        <%=link_to(image_tag("avatar/repair.png",style: "width:100%;height:100%;"),root_path) %>
+      </div>
+    </div>
+  </div>
+
+
+
+<%end %>
+<!--<a href="users/sign_out" methods="delete">LogOut</a>-->
+<%#= link_to('Logout', destroy_user_session_path, method: :delete) %>

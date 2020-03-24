@@ -1,0 +1,80 @@
+# <table>
+#   <thead>
+#   <tr>
+#     <th>Description</th>
+#     <th>Type</th>
+#     <th>Block</th>
+#     <th>Floor</th>
+#     <th>User</th>
+#     <th colspan="3"></th>
+#   </tr>
+#   </thead>
+#
+#   <tbody>
+#   <% @notifications.each do |notify| %>
+#     <tr>
+#       <td><%= notify.description %></td>
+#       <td><%= notify.type_of_property %></td>
+#       <td><%= notify.block %></td>
+#       <td><%= notify.floor %></td>
+# <!--      <td><%#= complaint.user %></td>-->
+#       <td><%= link_to 'Show', notify %></td>
+#       <!--        <td><%#= link_to 'Edit', edit_complaint_path(complaint) %></td>-->
+#       <%if current_user.id== notify.user_id%>
+#         <td><%= link_to 'Destroy', notify, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+#       <%end %>
+#     </tr>
+#   <% end %>
+#   </tbody>
+# </table>
+#
+#
+
+<style>
+  span{
+    font-weight: bold;
+  }
+</style>
+<div class="container">
+  <div class="row" style="padding: 2%">
+    <div class="col-lg-1 col-sm-0"></div>
+    <div class="col-lg-10 col-sm-12">
+      <h2 style="text-align: center;font-weight: bold;color: rgba(0,0,250,0.5)">Unsolved Complaints</h2>
+<!--      <div class="row">-->
+        <% @notifications.each do |notify| %>
+          <div class="row" style="padding: 4%">
+<!--           <div class="col-lg-12">-->
+            <div class="col-lg-12">
+              <div class="row" style="border: 10px solid rgba(255,0,0,0.1);padding: 2%">
+                <div class="col-lg-6 col-sm-6" style="text-align: center ;box-shadow: 10px 20px 20px 15px rgba(0,0,0,0.2);padding: 2%;border:1px solid rgba(255,0,255,0.2)">
+                  <% if notify.image.attached? %>
+                    <%= image_tag(solved.image,:class=> "rounded img-thumbnail",style: "width:100%,height:100%;") %>
+                  <% end %>
+                </div>
+                <div class="col-lg-6 col-sm-6"  style="text-align: left;font-weight: bold;font-size: 20px ">
+                  <div class="col-lg-12" style="text-align: left;padding-top:20% ;padding-bottom: 10%">
+                    <div class="col-lg-12" style="box-shadow: 10px 20px 20px 20px rgba(0,0,0,0.1);padding: 10%">
+                    <h5> Ticket Id : <%= notify.id%> </h5>
+                      <h4><span> Description: </span><%= notify.description %></h4>
+                      <h5><span>Type of Property: </span><%= notify.type_of_property %></h5>
+                      <h5><span>Block: </span><%= notify.block %></h5>
+                      <%if notify.type_of_property == 'Shared' %>
+                        <h3><span>Floor:</span><%= notify.floor %></h3>
+                      <%else %>
+                        <h3><span>Flat:</span><%= notify.floor %></h3>
+                      <%end %>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+            <!--          </div>-->
+          </div>
+        <%end%>
+<!--      </div>-->
+    </div>
+    <div class="col-lg-1 col-sm-0"></div>
+  </div>
+</div>

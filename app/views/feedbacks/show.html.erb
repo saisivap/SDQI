@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @feedback.description %>
+</p>
+
+<p>
+  <strong>Complaint:</strong>
+  <%= @feedback.complaint %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @feedback.user %>
+</p>
+
+<%= link_to 'Edit',  edit_complaint_feedback_path(@feedback) %> |
+<%= link_to 'Back', solvedComplaints_path %>
+<%#= link_to 'Back', fallback_location %>

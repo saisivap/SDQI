@@ -1,0 +1,53 @@
+<!--<!doctype html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--  <meta charset="UTF-8">-->
+<!--  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
+<!--  <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<!--  <title>Document</title>-->
+<!--</head>-->
+<!--<body style="" id="bg1">-->
+  <div class="container-fluid" >
+    <div class="container">
+<!--      <div class="row" style="margin-top: 5%;margin-left: 35%;transform: translate(50,20)">-->
+
+<!--        <h1 style="text-align: center">New Complaint</h1>-->
+<!--      </div>-->
+      <div class="row">
+        <div class="col-lg-1 col-sm-1 col-xs-0"></div>
+        <div class="col-lg-10 col-sm-10 col-xs-12">
+
+          <div class="row" style="margin-top: 5%">
+            <div class="col-lg-2"></div>
+<!--            <div style="background-image: image('avatar/pic1.png')">-->
+            <div class="col-lg-8" style="box-shadow: 1px 10px 20px rgba(0,0,0,0.5);background-color: rgba(0,00,0,0.0);border: 1px solid rgba(255,255,0,0.2)" id="bg_new">
+              <div class="row" style="padding-top:2%">
+                <div class="col-lg-12 col-sm-12" style="text-align:center">
+                  <%= image_tag "avatar/pic4.png",style:"width:100px;height:100px;background-color:white;box-shadow:1px 2px 20px black"  %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12 col-sm-12">
+                  <h1 style="padding-top: 5%;text-align: center">New Complaint</h1>
+                </div>
+              </div>
+
+              <%= render 'form', complaint: @complaint %>
+              <div class="row">
+                <div class="col-lg-12" style="padding-bottom:10% ">
+                  <%= link_to 'Back', root_path ,class: "btn btn-dark",style: "margin-left:3%;color:white"%>
+                </div>
+              </div>
+
+            </div>
+            <div class="col-lg-2"></div>
+          </div>
+<!--           </div>-->
+         </div>
+        </div>
+        <div class="col-lg-1 col-sm-1 col-xs-0"></div>
+      </div>
+    </div>
+  </div>
+<!--</body>-->
+<!--</html>-->
