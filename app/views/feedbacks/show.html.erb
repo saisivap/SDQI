@@ -1,20 +1,83 @@
-<p id="notice"><%= notice %></p>
+<!--<p id="notice"><%#= notice %></p>-->
 
-<p>
-  <strong>Description:</strong>
-  <%= @feedback.description %>
-</p>
+<!--<p>-->
+<!--  <strong>Description:</strong>-->
+  <%#= @feedback.description %>
+<!--</p>-->
 
-<p>
-  <strong>Complaint:</strong>
-  <%= @feedback.complaint %>
-</p>
+<!--<p>-->
+<!--  <strong>Complaint:</strong>-->
+  <%#= @feedback.complaint %>
+<!--</p>-->
 
-<p>
-  <strong>User:</strong>
-  <%= @feedback.user %>
-</p>
+<!--<p>-->
+<!--  <strong>User:</strong>-->
+  <%#= @feedback.user %>
+<!--</p>-->
 
-<%= link_to 'Edit',  edit_complaint_feedback_path(@feedback) %> |
-<%= link_to 'Back', solvedComplaints_path %>
+<!--<%#= link_to 'Edit',  edit_complaint_feedback_path(@feedback) %> |-->
+<%#= link_to 'Back', solvedComplaints_path %>
 <%#= link_to 'Back', fallback_location %>
+<div class="container" id="bg_new">
+  <div class="row" style="padding-top: 5%" >
+    <h5 style="text-align: center">Complaint Ticket Id:<%= Complaint.find(params['complaint_id']).id %></h5>
+    <div class="col-lg-1 col-sm-1"></div>
+    <div class="col-lg-10 col-sm-10" style="box-shadow: 1px 3px 3px 2px rgba(0,0,0,0.3);padding: 2%">
+      <% c= Complaint.find(params['complaint_id']) %>
+      <div class="row" style="text-align: center;padding: 1%">
+        <div class="col-lg-12 col-sm-12">
+          <h4>Description:<%= c.description %></h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-1 col-sm-1"></div>
+        <div class="col-lg-10 col-sm-10" style="text-align: center;padding: 2%">
+          <% if c.image.attached? %>
+            <%= image_tag(c.image,:class=> "rounded img-thumbnail",style: "width:100%,height:100%") %>
+          <%end %>
+        </div>
+        <div class="col-lg-1 col-sm-1"></div>
+      </div>
+      <div class="row" style="text-align: center;padding: 2%;background-color: rgba(0,0,0,0.3);border: 5px solid rgba(0,0,0,0.1);color:white;">
+        <div class="col-lg-4 col-sm-4">
+          <h4 style="font-weight: bold">Block:<%= c.block %></h4>
+        </div>
+        <div class="col-lg-4 col-sm-4">
+          <h4 style="font-weight: bold">Type Of Property:<%= c.type_of_property %></h4>
+        </div>
+        <% if c.type_of_property=='Shared' %>
+        <div class="col-lg-4 col-sm-4">
+          <h4 style="font-weight: bold">Floor:<%= c.floor %></h4>
+        </div>
+          <%else%>
+          <div class="col-lg-4 col-sm-4">
+            <h4 style="font-weight: bold">Flat:<%= c.floor %></h4>
+          </div>
+          <%end %>
+      </div>
+      <div class="row"style="padding: 2%" >
+        <div class="col-lg-1 col-sm-1"></div>
+        <div class="col-lg-10 col-sm-10" style="border: 1px solid black;background-color: rgba(255,255,0,0.2)">
+          <h5>Feedback:</h5>
+          <h4><%= @feedback.description %></h4>
+        </div>
+        <div class="col-lg-1 col-sm-1"></div>
+      </div>
+      <div class="row">
+        <div class="col-lg-3 col-sm-3"></div>
+        <div class="col-lg-6 col-sm-6">
+          <div class="row" style="padding: 2%">
+            <div class="col-lg-6 col-sm-6" style="padding: 2%">
+              <%= link_to 'Back', solvedComplaints_path,class: "btn btn-warning" ,style: "width:100%"%>
+            </div>
+            <div class="col-lg-6 col-sm-6" style="padding: 2%">
+              <%= link_to 'Home', root_path,class: "btn btn-info" ,style: "width:100%"%>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-sm-3"></div>
+      </div>
+    </div>
+    <div class="col-lg-1 col-sm-1"></div>
+  </div>
+</div>

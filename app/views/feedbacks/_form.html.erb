@@ -10,33 +10,89 @@
       </ul>
     </div>
   <% end %>
-<%#= params[""] %>
-  <table>
-    <tr>
-      <%c=Complaint.find(params['complaint_id']) %>
-      <td><%= c.description %></td>
-      <td><%= c.block %></td>
-      <td><%= c.image %></td>
-      <td><%= c.type_of_property %></td>
-      <td><%= c.floor %></td>
-    </tr>
-  </table>
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
+
+<!--  <table>-->
+<!--    <tr>-->
+      <%#c=Complaint.find(params['complaint_id']) %>
+<!--      <td><%#= c.description %></td>-->
+<!--      <td><%#= c.block %></td>-->
+<!--      <td><%#= c.image %></td>-->
+<!--      <td><%#= c.type_of_property %></td>-->
+<!--      <td><%#= c.floor %></td>-->
+<!--    </tr>-->
+<!--  </table>-->
+  <% c=Complaint.find(params['complaint_id']) %>
+  <div class="row" >
+    <h6>Feedback to Ticket Id:<%= c.id %></h6>
+    <div class="col-lg-1 col-sm-0"></div>
+    <div class="col-lg-10 col-sm-10" style="box-shadow:2px 5px 5px 3px rgba(0,0,0,0.2);padding: 1%">
+<!--      <div class="row" style="text-align: center">-->
+        <h4 style="text-align: center">Description:<%= c.description %></h4>
+<!--      </div>-->
+      <div class="row" style="padding: 3%">
+        <div class="col-lg-12 col-sm-12" style="text-align: center">
+          <% if c.image.attached? %>
+            <%= image_tag(c.image,:class=> "rounded img-thumbnail",style: "width:100%,height:100%") %>
+          <%end %>
+        </div>
+      </div>
+      <div class="row" style="text-align: center;border: 5px solid rgba(5,0,0,0.1);padding: 2%;background-color:rgba(5,0,0,0.3);color:white;">
+        <div class="col-lg-4 col-sm-4">
+          <h5 style="font-weight: bold">Block: <%= c.block %></h5>
+        </div>
+        <div class="col-lg-4 col-sm-4">
+          <h5 style="font-weight: bold">Type Of Property: <%= c.type_of_property %></h5>
+        </div>
+        <% if c.type_of_property=='Shared' %>
+        <div class="col-lg-4 col-sm-4">
+          <h5 style="font-weight: bold">Floor :<%= c.floor %></h5>
+        </div>
+          <%else %>
+          <div class="col-lg-4 col-sm-4">
+            <h5>Flat: <%= c.floor %></h5>
+          </div>
+        <%end %>
+      </div>
+      <div class="col-lg-12 col-sm-10" id="">
+        <div class="field">
+          <h5 style="font-weight: bold">Feedback by <%= current_user.first_name %>(<%= current_user.email %>)</h5>
+          <%= form.text_area :description,style:"width:100%;height:100px;border:2px solid black",placeholder:"Feedback here... "%>
+        </div>
+        <div class="col-lg-10 col-sm-10">
+          <div class="actions">
+            <%= form.submit class:"btn btn-warning"%>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-1 col-sm-0"></div>
   </div>
 
-  <div class="field">
-    <% form.label :complaint_id %>
-    <% form.text_field :complaint_id,:value=> params['complaint_id'] %>
-  </div>
+<!--  <div class="row">-->
+<!--    <div class="col-lg-1 col-sm-1"></div>-->
+<!--    <div class="col-lg-10 col-sm-10">-->
+<!--      <div class="field">-->
+        <%#= form.label :description ,"Feedback"%>
+        <%#= form.text_area :description,style:"width:100%;height:100px" %>
+<!--      </div>-->
+<!--      <div class="col-lg-10 col-sm-10">-->
+<!--        <div class="actions">-->
+          <%#= form.submit class:"btn btn-success"%>
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="col-lg-1 col-sm-1"></div>-->
+<!--  </div>-->
 
-  <div class="field">
-    <% form.label :user_id %>
-    <% form.text_field :user_id,:value=> current_user.id %>
-  </div>
+<!--  <div class="field">-->
+    <%# form.label :complaint_id %>
+    <%# form.text_field :complaint_id,:value=> params['complaint_id'] %>
+<!--  </div>-->
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+<!--  <div class="field">-->
+    <%# form.label :user_id %>
+    <%# form.text_field :user_id,:value=> current_user.id %>
+<!--  </div>-->
+
+
 <% end %>

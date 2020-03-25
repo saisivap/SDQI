@@ -1,5 +1,18 @@
-<h1>New Feedback</h1>
+<div class="container">
+  <div class="row" style="padding-top:5% ">
+    <div class="col-lg-1 col-sm-1"></div>
+    <div class="col-lg-10 col-sm-10" id="bg_new" style="padding: 0%">
+      <h1></h1>
 
-<%= render 'form', feedback: @feedback %>
+      <%= render 'form', feedback: @feedback %>
+      <div class="row" style="padding-top:2% ">
+        <div class="col-lg-3 col-sm-3">
+          <%= link_to 'Back', solvedComplaints_path,class: "btn btn-dark" ,style:"padding:1% ;width:100%;height:100%;color:white" %>
+        </div>
 
-<%= link_to 'Back', complaint_feedbacks_path %>
+      </div>
+    </div>
+    <div class="col-lg-1 col-sm-1" ></div>
+  </div>
+</div>
+
