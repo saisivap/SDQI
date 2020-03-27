@@ -7,8 +7,8 @@
 <p id="notice"><%= notice %></p>
 
 
-<% if user_signed_in? && (current_user.admin=='ture' || current_user.role=="security") %>
-  <%if current_user.admin==true %>
+<% if user_signed_in? && (current_user.admin? || current_user.role=="security") %>
+  <%if current_user.admin? %>
     <h1>Welome To Condo and Housing </h1>
       <h1>Hello Admin</h1>
     <%else %>

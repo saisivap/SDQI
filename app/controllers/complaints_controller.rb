@@ -1,6 +1,7 @@
 class ComplaintsController < ApplicationController
   before_action :set_complaint, only: [:show, :destroy]
   before_action :authenticate_user!
+  before_action :admin_user,only: [:index]
   # GET /complaints
   # GET /complaints.json
   def index

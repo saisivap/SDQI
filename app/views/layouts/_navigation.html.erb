@@ -21,10 +21,12 @@
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Menu
         </a>
-        <%if  current_user.admin=='ture' or current_user.role=='security'%>
+        <%if  current_user.admin? or current_user.role=='security'%>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="#">Maintenance</a>
             <a class="dropdown-item" href="#">Feedback</a>
+            <a class="dropdown-item" href="/residents">Residents</a>
+            <a class="dropdown-item" href="/complaints">All Complaints</a>
           </div>
           <%else %>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
