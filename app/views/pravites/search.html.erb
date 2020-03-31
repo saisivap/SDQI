@@ -1,0 +1,11 @@
+<h3>Search Result</h3>
+
+<% @results.each do |result| %>
+  <%= result.flate %><br>
+  <%= result.block %><br>
+  <%= User.find(result.user_id).email %><br>
+<% end %>
+
+<%# for quotation in @results %>
+<!--  <li><%#=  quotation.block %>: <%#=  quotation.flate %></li>-->
+<%# end %>

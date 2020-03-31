@@ -1,0 +1,46 @@
+<%= form_with(model: pravite, local: true) do |form| %>
+  <% if pravite.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(pravite.errors.count, "error") %> prohibited this pravite from being saved:</h2>
+
+      <ul>
+      <% pravite.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <h5><%= form.label :block %></h5>
+    <%#= form.text_field :block %>
+    <%= select_tag :block, options_for_select([['A','A'],['B','B']]),class:"dropdown-item",style:"border:3px solid black;font-weight:bold;background:rgba(250,250,0,0.1)"  %>
+  </div>
+
+  <div class="field">
+    <h5><%= form.label :flat %></h5>
+    <%= form.number_field :flate ,style:"width:100%;height:40px"%>
+  </div>
+
+  <div class="field">
+    <h5><%= form.label :type_of_service %></h5>
+    <%#= form.text_field :type_of_service %>
+    <%= select_tag :type, options_for_select([['fix_lights','fix_lights'],['repair_fan','repair_fan'],['water_tin','water_tin'],['Gas_cylinder','Gas_cylinder']]),class:"dropdown-item",style:"border:3px solid black;font-weight:bold;background:rgba(250,250,0,0.1)"  %>
+  </div>
+
+<!--  <div class="field">-->
+    <%#= form.label :user_id %>
+    <%#= form.text_field :user_id %>
+<!--  </div>-->
+  <div class="row">
+    <div class="col-lg-6 col-sm-6">
+      <div class="actions">
+        <%= form.submit "Add To Private Property", class:"btn btn-success",style:"width:100%"%>
+      </div>
+    </div>
+    <div class="col-lg-6 col-sm-6">
+      <%= link_to "Back",pravites_path,class: "btn btn-dark",style: "width:100%;color:white"%>
+    </div>
+  </div>
+
+<% end %>

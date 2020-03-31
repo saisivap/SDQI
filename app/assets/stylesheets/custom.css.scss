@@ -73,3 +73,17 @@ input{
   }
 
 }
+.hover1:hover{
+  background-color: rgba(100,0,0,0.2);
+  //opacity: 0.2;
+  h5{
+    font-weight: bold;
+  }
+  img{
+    padding: 5%;
+    background-color: white;
+  }
+  a{
+    text-decoration: none;
+  }
+}

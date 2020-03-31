@@ -8,12 +8,23 @@
 
 
 <% if user_signed_in? && (current_user.admin? || current_user.role=="security") %>
+  <div class="container">
   <%if current_user.admin? %>
-    <h1>Welome To Condo and Housing </h1>
-      <h1>Hello Admin</h1>
-    <%else %>
-    <h1>Hello <%=current_user.role %></h1>
-    <%end %>
+    <div class="row" style="text-align: center;padding-top: 2%">
+
+        <div class="col-lg-3 col-sm-3">
+          <%= image_tag "avatar/pic4.png",style:"width:100px;height:100px;background-color:white;box-shadow:1px 2px 20px black"  %>
+        </div>
+        <div class="col-lg-9 col-sm-9">
+          <h1 style="background-color: rgba(200,0,0,0.2)">Welome To Condo and Housing </h1>
+          <h1 style="background-color: rgba(0,0,200,0.2)">Hello Admin</h1>
+          <%else %>
+          <h1>Hello <%=current_user.role %></h1>
+          <%end %>
+        </div>
+
+    </div>
+  </div>
   <%# @complaints.each do |comp| %>
 <!--    <tr>-->
 <!--      <td><%#= comp.user.first_name + comp.user.last_name %></td>-->
@@ -45,6 +56,12 @@
     }
   </style>
   <div class="container">
+
+    <div class="row" style="padding-top: 3%;text-align: center">
+      <div class="col-lg-12 col-sm-12">
+        <%= link_to "search Complaint",complaints_path,class: "btn btn-warning" %>
+      </div>
+    </div>
     <div class="row" style="padding: 2%">
       <div class="col-lg-1 col-sm-0"></div>
       <div class="col-lg-10 col-sm-12">

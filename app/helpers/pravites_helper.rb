@@ -1,0 +1,2 @@
+module PravitesHelper
+end

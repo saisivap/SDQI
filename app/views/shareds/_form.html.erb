@@ -1,0 +1,56 @@
+
+
+<%= form_with(model: shared, local: true) do |form| %>
+  <% if shared.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(shared.errors.count, "error") %> prohibited this shared from being saved:</h2>
+
+      <ul>
+        <% shared.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="field">
+        <h5><%= form.label :block %></h5>
+        <%#= form.text_field :block %>
+        <%= select_tag :block, options_for_select([['A','A'],['B','B']]),class:"dropdown-item",style:"border:3px solid black;font-weight:bold;background:rgba(250,50,250,0.1);width:80%"  %>
+      </div>
+    </div>
+    <div class="col-lg-12">
+      <div class="field">
+        <h5><%= form.label :floor %></h5>
+        <%= form.number_field :floor,style:"width:80%;height:40px" %>
+      </div>
+    </div>
+    <div class="col-lg-12">
+      <div class="field">
+        <h5><%= form.label :type_of_service %></h5>
+        <%#= form.text_field :type_of_service %>
+        <%= select_tag :type, options_for_select([['fix_lights','fix_lights'],['cleaning','cleaning'],['Garbage_clean','Garbage_clean'],['doors','doors']]),class:"dropdown-item",style:"border:3px solid black;font-weight:bold;background:rgba(250,50,250,0.1);width:80%"  %>
+      </div>
+    </div>
+    <div class="col-lg-12">
+      <div class="field">
+        <%#= form.label :user_id %>
+        <%#= form.text_field :user_id %>
+      </div>
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="actions">
+        <%= form.submit "Add To shared Property",class:"btn btn-success" ,style:"width:80%"%>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <%= link_to "Back",shareds_path,class: "btn btn-dark",style: "width:70%;color:white" %>
+    </div>
+  </div>
+
+
+<% end %>

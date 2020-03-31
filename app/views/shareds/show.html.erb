@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Block:</strong>
+  <%= @shared.block %>
+</p>
+
+<p>
+  <strong>Floor:</strong>
+  <%= @shared.floor %>
+</p>
+
+<p>
+  <strong>Type of service:</strong>
+  <%= @shared.type_of_service %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @shared.user %>
+</p>
+
+<%= link_to 'Edit', edit_shared_path(@shared) %> |
+<%= link_to 'Back', shareds_path %>

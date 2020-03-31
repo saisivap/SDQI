@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :pravites,except:[:show]
+  resources :shareds,except:[:show]
   resources :complaints,except:[:edit,:update] do
     resources :feedbacks
   end
@@ -9,6 +11,10 @@ Rails.application.routes.draw do
   get 'residents', to: 'mainpage#residents'
   get 'deluser/:user_id', to: 'mainpage#deluser',as:'deluser'
   get 'user_profile/:user_id', to: 'mainpage#user_profile',as:'profile'
+  get 'add_security', to: 'mainpage#add_security',as:'security'
+  get 'save_details', to: 'mainpage#save_as_security',as:'securitydetails'
+  get 'maintenance', to: 'mainpage#maintenance',as:'maintenance'
+  get 'search' => 'pravites#search', :as => 'search_page'
 
   # get "shared_complaints",to:'complaint#sharedcomplaint'
   get 'sharedcomplaints',to:'complaints#sharedcomplaints'

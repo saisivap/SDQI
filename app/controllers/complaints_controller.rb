@@ -1,11 +1,21 @@
 class ComplaintsController < ApplicationController
   before_action :set_complaint, only: [:show, :destroy]
   before_action :authenticate_user!
-  before_action :admin_user,only: [:index]
+  # before_action :admin_user,only: [:index]
+
   # GET /complaints
   # GET /complaints.json
+  # def index
+  #   @complaints = Complaint.all
+  # end
   def index
-    @complaints = Complaint.all
+    if params[:term].blank?
+      @complaints= Complaint.all
+      # redirect_to complaints_path
+    else
+      @complaints = Complaint.search_by_full_details(params[:term])
+
+    end
   end
   def sharedcomplaints
     @complaints=Complaint.where("type_of_property":"Shared", "block":"A").all.order("created_at DESC")
@@ -74,7 +84,7 @@ class ComplaintsController < ApplicationController
   # DELETE /complaints/1
   # DELETE /complaints/1.json
   def destroy
-    @complaint.destroy
+    @complaint.destroy_all
     respond_to do |format|
       format.html { redirect_to complaints_url, notice: 'Complaint was successfully destroyed.' }
       format.json { head :no_content }

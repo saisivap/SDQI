@@ -17,7 +17,31 @@
   }
 </style>
 <!--<div class="container">-->
-  <div class="row" style="padding-top:5% ">
+<div class="row" style="padding-top:2%">
+  <div class="col-lg-12 col-sm-12" style="text-align:center">
+    <%= image_tag "avatar/pic4.png",style:"width:100px;height:100px;background-color:white;box-shadow:1px 2px 20px black"  %>
+  </div>
+</div>
+<div class="row" style="padding-top: 2%">
+  <div class="col-lg-1 col-sm-1"></div>
+  <div class="col-lg-4 col-sm-4 col-xs-4" style="padding: 1%">
+    <%#= link_to 'Add To Shared Property', new_shared_path ,class: "btn btn-warning",style: "width:100%;color:white"%>
+
+    <%= form_tag residents_path, method: :get do %>
+      <%= text_field_tag 'term', params[:term], placeholder: "Search by Email,Name,Flat",style:"width:60%;height:40px;border-radius:5%;border:3px solid rgba(0,0,0,0.3)" %>
+      <%= submit_tag 'Search!',class:"btn btn-warning" %>
+    <% end %>
+
+  </div>
+  <div class="col-lg-3 col-sm-3" style="padding: 1%">
+    <%= link_to 'Add Security', security_path ,class: "btn btn-info",style: "width:100%;color:white"%>
+  </div>
+  <div class="col-lg-3 col-sm-3" style="padding: 1%">
+    <%= link_to 'Back', root_path ,class: "btn btn-dark",style: "width:100%;color:white"%>
+  </div>
+  <div class="col-lg-1 col-sm-1"></div>
+</div>
+  <div class="row" style="padding-top:2% ">
     <div class="col-lg-1 col-sm-1"></div>
     <div class="col-lg-10 col-sm-10 col-xs-12">
       <table>
@@ -58,6 +82,8 @@
       </table>
 
     </div>
-    <div class="col-lg-1 col-sm-1"></div>
+    <div class="col-lg-1 col-sm-1">
+      <%#= link_to "Add Security",security_path,class: "btn btn-warning" %>
+    </div>
   </div>
 </div>

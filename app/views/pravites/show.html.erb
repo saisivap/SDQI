@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Block:</strong>
+  <%= @pravite.block %>
+</p>
+
+<p>
+  <strong>Flate:</strong>
+  <%= @pravite.flate %>
+</p>
+
+<p>
+  <strong>Type of service:</strong>
+  <%= @pravite.type_of_service %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @pravite.user %>
+</p>
+
+<%= link_to 'Edit', edit_pravite_path(@pravite) %> |
+<%= link_to 'Back', pravites_path %>

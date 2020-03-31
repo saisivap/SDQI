@@ -13,7 +13,13 @@ class MainpageController < ApplicationController
     redirect_to(root_path)
   end
   def residents
-    @residents=User.all
+    # @residents=User.all
+    if params[:term].blank?
+      @residents=User.all
+      # redirect_to residents_path
+    else
+      @residents = User.search_by_full_details(params[:term])
+    end
     # @residents=User.where(role:"register" ,role:"security").all
   end
   def deluser
@@ -23,5 +29,16 @@ class MainpageController < ApplicationController
   end
   def user_profile
     @user=User.find(params[:user_id])
+  end
+  def add_security
+    # debugger
+    # parmparmsas
+    # @data=User.new
+  end
+  def save_as_security
+    debugger
+  end
+  def maintenance
+
   end
 end

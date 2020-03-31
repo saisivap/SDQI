@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  block: MyString
+  floor: 1
+  type_of_service: MyString
+  user: one
+
+two:
+  block: MyString
+  floor: 1
+  type_of_service: MyString
+  user: two
