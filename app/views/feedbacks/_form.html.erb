@@ -1,3 +1,10 @@
+<style>
+  #imgs{
+    wdith:200px;
+    height: 200px;
+
+  }
+</style>
 <%= form_with(model: [@feedback], local: true,url: complaint_feedbacks_path) do |form| %>
   <% if feedback.errors.any? %>
     <div id="error_explanation">
@@ -11,88 +18,79 @@
     </div>
   <% end %>
 
-<!--  <table>-->
-<!--    <tr>-->
-      <%#c=Complaint.find(params['complaint_id']) %>
-<!--      <td><%#= c.description %></td>-->
-<!--      <td><%#= c.block %></td>-->
-<!--      <td><%#= c.image %></td>-->
-<!--      <td><%#= c.type_of_property %></td>-->
-<!--      <td><%#= c.floor %></td>-->
-<!--    </tr>-->
-<!--  </table>-->
-  <% c=Complaint.find(params['complaint_id']) %>
-  <div class="row" >
-    <h6>Feedback to Ticket Id:<%= c.id %></h6>
-    <div class="col-lg-1 col-sm-0"></div>
-    <div class="col-lg-10 col-sm-10" style="box-shadow:2px 5px 5px 3px rgba(0,0,0,0.2);padding: 1%">
-<!--      <div class="row" style="text-align: center">-->
-        <h4 style="text-align: center">Description:<%= c.description %></h4>
-<!--      </div>-->
-      <div class="row" style="padding: 3%">
-        <div class="col-lg-12 col-sm-12" style="text-align: center">
-          <% if c.image.attached? %>
-            <%= image_tag(c.image,:class=> "rounded img-thumbnail",style: "width:100%,height:100%") %>
-          <%end %>
-        </div>
-      </div>
-      <div class="row" style="text-align: center;border: 5px solid rgba(5,0,0,0.1);padding: 2%;background-color:rgba(5,0,0,0.3);color:white;">
-        <div class="col-lg-4 col-sm-4">
-          <h5 style="font-weight: bold">Block: <%= c.block %></h5>
-        </div>
-        <div class="col-lg-4 col-sm-4">
-          <h5 style="font-weight: bold">Type Of Property: <%= c.type_of_property %></h5>
-        </div>
-        <% if c.type_of_property=='Shared' %>
-        <div class="col-lg-4 col-sm-4">
-          <h5 style="font-weight: bold">Floor :<%= c.floor %></h5>
-        </div>
-          <%else %>
-          <div class="col-lg-4 col-sm-4">
-            <h5>Flat: <%= c.floor %></h5>
+
+<% c=Complaint.find(params['complaint_id']) %>
+  <div class="row" style="padding-top:0%">
+    <div class="col-lg-12 col-sm-12" style="text-align:center">
+      <%= image_tag "avatar/pic4.png",style:"width:100px;height:100px;background-color:white;box-shadow:1px 2px 20px black"  %>
+    </div>
+  </div>
+  <div class="row" style="padding-top: 2%">
+    <div class="col-lg-12 col-sm-12" style="text-align: center">
+      <h4><spam style="background-color: rgba(0,0,200,0.3);padding: 1%;letter-spacing: 2px">Feedback of Ticket ID :<%= c.id %></spam></h4>
+    </div>
+  </div>
+  <div class="row" style="padding: 1%">
+    <div class=""></div>
+    <div class="col-lg-6 col-sm-6" style="text-align: center;padding: 3%;border: 0px solid black">
+      <div class="row">
+        <div class="col-lg-12 col-sm-12" style="padding: 1%;border:10px solid rgba(100,0,0,0.2)">
+          <h4><%= c.description%></h4>
+          <div class="row" style="padding: 2%">
+            <div class="col-lg-12 col-sm-12" style="text-align: center;">
+              <% if c.image.attached? %>
+                <%= image_tag(c.image,:class=> "rounded img-thumbnail",id:"imgs") %>
+              <%end %>
+            </div>
           </div>
-        <%end %>
-      </div>
-      <div class="col-lg-12 col-sm-10" id="">
-        <div class="field">
-          <h5 style="font-weight: bold">Feedback by <%= current_user.first_name %>(<%= current_user.email %>)</h5>
-          <%= form.text_area :description,style:"width:100%;height:100px;border:2px solid black",placeholder:"Feedback here... "%>
-        </div>
-        <div class="col-lg-10 col-sm-10">
-          <div class="actions">
-            <%= form.submit class:"btn btn-warning"%>
+          <div class="row" style="padding: 3%;border:5px solid rgba(0,0,0,0.4);background-color: rgba(0,0,0,0.2);color:white">
+            <div class="col-lg-3 col-sm-3">
+              <h5 style="font-weight: bold"> block: <%= c.block %></h5>
+            </div>
+            <div class="col-lg-5 col-sm-5">
+              <h5 style="font-weight: bold">Type: <%= c.type_of_property %></h5>
+            </div>
+            <div class="col-lg-4 col-sm-4">
+              <%if c.type_of_property=='Shared' %>
+                <h5 style="font-weight: bold">Floor: <%= c.floor %></h5>
+              <%else %>
+                <h5 style="font-weight: bold">Flat: <%= c.floor%></h5>
+              <%end %>
+
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-lg-1 col-sm-0"></div>
+    <div class="col-lg-6 col-sm-6" style="padding: 3%;border:10px solid rgba(0,100,0,0.5)">
+      <div class="row">
+        <div class="col-lg-12 col-sm-12">
+          <div class="row">
+            <div class="col-lg-12 col-sm-12" style="padding: 1%;border:0px solid black">
+              <h6>Feedback by <spam style="font-weight: bold;letter-spacing: 2px">
+                <%= current_user.email %>
+              </spam></h6>
+              <div class="field">
+                <!--        <h5 style="font-weight: bold">Feedback by <%#= current_user.first_name %>(<%#= current_user.email %>)</h5>-->
+                <%= form.text_area :description,style:"width:100%;height:200px;border:2px solid black",placeholder:"Feedback here... "%>
+              </div>
+              <div class="row">
+                <col-lg-6 class="col-sm-6">
+                  <div class="actions">
+                    <%= form.submit class:"btn btn-warning"%>
+                  </div>
+                </col-lg-6>
+                <col-lg-6 class="col-sm-6">
+                  <%= link_to 'Back', solvedComplaints_path,class: "btn btn-dark",style: "width:100%;color:white"  %>
+                </col-lg-6>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
   </div>
-
-<!--  <div class="row">-->
-<!--    <div class="col-lg-1 col-sm-1"></div>-->
-<!--    <div class="col-lg-10 col-sm-10">-->
-<!--      <div class="field">-->
-        <%#= form.label :description ,"Feedback"%>
-        <%#= form.text_area :description,style:"width:100%;height:100px" %>
-<!--      </div>-->
-<!--      <div class="col-lg-10 col-sm-10">-->
-<!--        <div class="actions">-->
-          <%#= form.submit class:"btn btn-success"%>
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-lg-1 col-sm-1"></div>-->
-<!--  </div>-->
-
-<!--  <div class="field">-->
-    <%# form.label :complaint_id %>
-    <%# form.text_field :complaint_id,:value=> params['complaint_id'] %>
-<!--  </div>-->
-
-<!--  <div class="field">-->
-    <%# form.label :user_id %>
-    <%# form.text_field :user_id,:value=> current_user.id %>
-<!--  </div>-->
-
-
 <% end %>

@@ -24,7 +24,7 @@
         <%if  current_user.admin? or current_user.role=='security'%>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="/maintenance">Maintenance</a>
-            <a class="dropdown-item" href="#">Feedback</a>
+            <a class="dropdown-item" href="/view_feedback">Feedback</a>
             <a class="dropdown-item" href="/residents">Residents</a>
             <a class="dropdown-item" href="/complaints">All Complaints</a>
           </div>
@@ -35,8 +35,8 @@
             <%#= link_to "Shared Complaints", sharedcomplaints_path,class: "dropdown-item" %>
             <a class="dropdown-item" href="/solvedComplaints">Solved Complaints</a>
             <a class="dropdown-item" href="/complaints">Search Complaint</a>
-            <a class="dropdown-item" href="">Maintenance</a>
-            <a class="dropdown-item" href="#">Booking</a>
+            <a class="dropdown-item" href="/users_maintenance">Maintenance</a>
+            <a class="dropdown-item" href=" /bookings/new">Booking</a>
           </div>
           <%end %>
 

@@ -30,10 +30,29 @@ class MainpageController < ApplicationController
   def user_profile
     @user=User.find(params[:user_id])
   end
+  def view_feedback
+    @feedbacks=Feedback.all.order("created_at DESC")
+  end
+  def users_maintenance
+    if params[:term].blank?
+    @private=Pravite.all.order("created_at DESC")
+    # debugger
+    @shared=Shared.all.order("created_at DESC")
+    else
+      @private = Pravite.search_by_full_details(params[:term])
+      @shared = Shared.search_by_full_details(params[:term])
+      end
+  end
   def add_security
     # debugger
     # parmparmsas
-    # @data=User.new
+    @resource=User.new
+  end
+  def new
+    @resource=User.new
+  end
+  def create
+    debugger
   end
   def save_as_security
     debugger

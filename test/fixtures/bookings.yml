@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  aminite: one
+  roomsofaminite: one
+  from_time: 1
+  to_time: 1
+  date_of_the_day: 2020-04-14
+
+two:
+  user: two
+  aminite: two
+  roomsofaminite: two
+  from_time: 1
+  to_time: 1
+  date_of_the_day: 2020-04-14

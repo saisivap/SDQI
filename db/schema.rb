@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_28_101503) do
+ActiveRecord::Schema.define(version: 2020_04_13_184544) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,26 @@ ActiveRecord::Schema.define(version: 2020_03_28_101503) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "aminites", force: :cascade do |t|
+    t.string "name_of_aminite"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "bookings", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "aminite_id"
+    t.bigint "roomsofaminite_id"
+    t.integer "from_time"
+    t.integer "to_time"
+    t.date "date_of_the_day"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["aminite_id"], name: "index_bookings_on_aminite_id"
+    t.index ["roomsofaminite_id"], name: "index_bookings_on_roomsofaminite_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
   create_table "complaints", force: :cascade do |t|
@@ -69,6 +89,14 @@ ActiveRecord::Schema.define(version: 2020_03_28_101503) do
     t.index ["user_id"], name: "index_pravites_on_user_id"
   end
 
+  create_table "roomsofaminites", force: :cascade do |t|
+    t.string "name_of_room"
+    t.bigint "aminite_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["aminite_id"], name: "index_roomsofaminites_on_aminite_id"
+  end
+
   create_table "shareds", force: :cascade do |t|
     t.string "block"
     t.integer "floor"
@@ -99,9 +127,13 @@ ActiveRecord::Schema.define(version: 2020_03_28_101503) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "bookings", "aminites"
+  add_foreign_key "bookings", "roomsofaminites"
+  add_foreign_key "bookings", "users"
   add_foreign_key "complaints", "users"
   add_foreign_key "feedbacks", "complaints"
   add_foreign_key "feedbacks", "users"
   add_foreign_key "pravites", "users"
+  add_foreign_key "roomsofaminites", "aminites"
   add_foreign_key "shareds", "users"
 end
