@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @aminitebooking.user %>
+</p>
+
+<p>
+  <strong>Roomsofaminite:</strong>
+  <%= @aminitebooking.roomsofaminite %>
+</p>
+
+<p>
+  <strong>From time date:</strong>
+  <%= @aminitebooking.from_time_date %>
+</p>
+
+<p>
+  <strong>To time date:</strong>
+  <%= @aminitebooking.to_time_date %>
+</p>
+
+<p>
+  <strong>Vacte:</strong>
+  <%= @aminitebooking.vacte %>
+</p>
+
+<%= link_to 'Edit', edit_aminitebooking_path(@aminitebooking) %> |
+<%= link_to 'Back', aminitebookings_path %>

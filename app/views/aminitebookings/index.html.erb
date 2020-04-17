@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Aminitebookings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Roomsofaminite</th>
+      <th>From time date</th>
+      <th>To time date</th>
+      <th>Vacte</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @aminitebookings.each do |aminitebooking| %>
+      <tr>
+        <td><%= aminitebooking.user %></td>
+        <td><%= aminitebooking.roomsofaminite %></td>
+        <td><%= aminitebooking.from_time_date %></td>
+        <td><%= aminitebooking.to_time_date %></td>
+        <td><%= aminitebooking.vacte %></td>
+        <td><% @ami=Aminitebooking.between_times(aminitebooking.from_time_date,aminitebooking.to_time_date) %>
+
+        </td>
+        <td><%= link_to 'Show', aminitebooking %></td>
+        <td><%= link_to 'Edit', edit_aminitebooking_path(aminitebooking) %></td>
+        <td><%= link_to 'Destroy', aminitebooking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Aminitebooking', new_aminitebooking_path %>

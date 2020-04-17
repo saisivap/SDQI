@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :aminitebookings
   resources :bookings
   resources :pravites,except:[:show]
   resources :shareds,except:[:show]

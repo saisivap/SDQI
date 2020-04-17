@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  roomsofaminite: one
+  from_time_date: 2020-04-15 12:53:21
+  to_time_date: 2020-04-15 12:53:21
+  vacte: false
+
+two:
+  user: two
+  roomsofaminite: two
+  from_time_date: 2020-04-15 12:53:21
+  to_time_date: 2020-04-15 12:53:21
+  vacte: false

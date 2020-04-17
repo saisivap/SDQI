@@ -1,0 +1,43 @@
+<%= form_with(model: aminitebooking, local: true) do |form| %>
+  <% if aminitebooking.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(aminitebooking.errors.count, "error") %> prohibited this aminitebooking from being saved:</h2>
+
+      <ul>
+      <% aminitebooking.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%#= form.label :user_id %>
+    <%= form.text_field :user_id ,:value => current_user.id,:hidden=>true%>
+  </div>
+
+  <div class="field">
+    <%= form.label :roomsofaminite_id %>
+    <%#= form.text_field :roomsofaminite_id %>
+    <%= form.select :roomsofaminite_id, Roomsofaminite.pluck(:name_of_room,:id).uniq%>
+  </div>
+
+  <div class="field">
+    <%= form.label :from_time_date %>
+    <%= form.datetime_select :from_time_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :to_time_date %>
+    <%= form.datetime_select :to_time_date %>
+  </div>
+
+<!--  <div class="field">-->
+    <%#= form.label :vacte %>
+    <%#= form.check_box :vacte %>
+<!--  </div>-->
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

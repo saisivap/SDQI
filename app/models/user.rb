@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :feedbacks
   has_many :shareds
   has_many :pravites
-
+  has_many :aminitebookings
   include PgSearch
   pg_search_scope :search_by_full_details, against: [:id, :flate,:first_name,:last_name,:email,:role,:created_at]
 end

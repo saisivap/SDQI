@@ -29,6 +29,8 @@ gem 'bootstrap-sass', '~> 3.4.1'
 gem 'sassc-rails', '>= 2.1.0'
 gem 'jquery-rails'
 gem 'pg_search'
+gem 'composite_primary_keys'
+gem 'by_star'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
@@ -58,6 +60,12 @@ group :development do
 end
 
 group :test do
+  gem 'cucumber-rails', :require => false
+# database_cleaner is not required, but highly recommended
+  gem 'database_cleaner'
+  gem 'factory_bot_rails'
+  gem 'launchy'
+  gem 'rspec-rails'
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
