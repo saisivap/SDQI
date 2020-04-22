@@ -1,0 +1,86 @@
+<style>
+  hr.class-5 {
+    background-color: #fff;
+    border-top: 2px dashed #8c8b8b;
+  }
+  span{
+    color:black;
+    font-weight: bold;
+  }
+</style>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-0 col-sm-0"></div>
+    <div class="col-lg-12 col-sm-12">
+      <div class="row" style="padding-top:2%">
+        <div class="col-lg-12 col-sm-12" style="text-align:center">
+          <%= image_tag "avatar/pic4.png",style:"width:100px;height:100px;background-color:white;box-shadow:1px 2px 20px black"  %>
+        </div>
+      </div>
+      <div class="row" style="padding-top: 2%">
+        <div class="col-lg-12 col-sm-12" style="text-align: center">
+          <h4 style="background-color: rgba(200,0,0,0.1);padding: 1%;border: 5px solid rgba(0,0,0,0.2)"><%= current_user.first_name + " Aminite Bookings" %></h4>
+        </div>
+      </div>
+      <div class="row" style="padding: 3%">
+      <div class="col-lg-12 col-sm-12" style="padding: 1%">
+        <div class="row" style="padding: 0%">
+        <%  @bookings.each do |booking| %>
+          <div class="col-lg-4 col-sm-4" style="">
+            <div class="should" <% if booking.id%2==0 %>style="padding: 5%;border: 3px solid rgba(100,0,0,0.5)"<%else %>style="padding: 5%;border: 3px solid skyblue"<%end %>>
+              <div class="row" style="padding-top: 3%">
+                <div class="col-lg-12 col-sm-12">
+                  <h5><span >Booking Id:</span> <%= booking.id %></h5>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12 col-sm-12">
+                  <h5><span >Resident Name: </span> <%= User.find(booking.user_id).first_name %></h5>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12 col-sm-12">
+                  <h5><span >Aminite Type: </span> <%= a=Aminite.find(Roomsofaminite.find(booking.roomsofaminite_id).aminite_id).name_of_aminite  %></h5>
+                </div>
+              </div>
+              <% if a=='study room' %>
+                <div class="row">
+                  <div class="col-lg-12 col-sm-12">
+                    <h5><span >Room number: </span> <%= booking.roomsofaminite_id %></h5>
+                  </div>
+                </div>
+              <%else %>
+                <div class="row">
+                  <div class="col-lg-12 col-sm-12">
+                    <h5><span >Court Number: </span> <%=  booking.roomsofaminite_id %></h5>
+                  </div>
+                </div>
+              <%end %>
+              <div class="row">
+                <div class="col-lg-12 col-sm-12">
+                  <h5><span >Date 0f Booking: </span> <%=  (booking.booking_date).strftime("%b %d, %Y") %></h5>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12 col-sm-12">
+                  <h5><span >Timings : </span> <%= ((booking.timing).to_s) +":00" +" - "+ ((((booking.timing).to_i)+1).to_s)+":00" %></h5>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12 col-sm-12" style="text-align: center">
+                  <%#= link_to (booking.created_at).strftime("%b %d, %Y"),residentbookings_path,class: "btn btn-warning",style: "width:100%" %>
+                  <h6 style="background-color: brown;color:wheat;padding: 2%;border: 2px solid black">Booked on <%= (booking.created_at).strftime("%b %d, %Y") %></h6>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        <% end %>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="col-lg-0 col-sm-0"></div>
+  </div>
+</div>

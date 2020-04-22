@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_15_055320) do
+ActiveRecord::Schema.define(version: 2020_04_22_080356) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,18 @@ ActiveRecord::Schema.define(version: 2020_04_15_055320) do
     t.string "name_of_aminite"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "bookingaminites", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "roomsofaminite_id"
+    t.date "booking_date"
+    t.integer "timing"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "aminite_id"
+    t.index ["roomsofaminite_id"], name: "index_bookingaminites_on_roomsofaminite_id"
+    t.index ["user_id"], name: "index_bookingaminites_on_user_id"
   end
 
   create_table "complaints", force: :cascade do |t|
@@ -127,6 +139,8 @@ ActiveRecord::Schema.define(version: 2020_04_15_055320) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "aminitebookings", "roomsofaminites"
   add_foreign_key "aminitebookings", "users"
+  add_foreign_key "bookingaminites", "roomsofaminites"
+  add_foreign_key "bookingaminites", "users"
   add_foreign_key "complaints", "users"
   add_foreign_key "feedbacks", "complaints"
   add_foreign_key "feedbacks", "users"

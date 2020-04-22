@@ -83,7 +83,7 @@
         <% if current_user.admin? || current_user.id==complaint.user_id %>
 <!--        <td><%#= link_to 'Show', complaint %></td>-->
 <!--        <td><%#= link_to 'Edit', edit_complaint_path(complaint) %></td>-->
-        <td><%= link_to 'Destroy', complaint, method: :delete, data: { confirm: 'Are you sure?' } ,class: "btn btn-danger"%></td>
+        <td><%= link_to  "Delete", complaint, method: :delete, data: { confirm: 'Are you sure?' } ,class: "btn btn-danger"%></td>
           <%end %>
         <%if current_user.admin? and complaint.solved==false%>
         <td><%= link_to 'Solve',solve_path(complaint) ,class: "btn btn-warning" %></td>

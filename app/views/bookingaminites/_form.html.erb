@@ -1,0 +1,236 @@
+<style>
+  #bookingaminite_roomsofaminite_id{
+    width: 100%;
+    height: 20px;
+    border:2px solid black;
+    /*padding: 10px;*/
+    background-color: white;
+    font-weight: bold;
+  }
+    #bookingaminite_booking_date_1i{
+      width:30%;
+      border:2px solid black;
+      /*padding: 10px;*/
+      background-color: white;
+      font-weight: bold;
+    }
+  #bookingaminite_booking_date_2i{
+    width:30%;
+    border:2px solid black;
+    /*padding: 10px;*/
+    background-color: white;
+    font-weight: bold;
+  }
+  #bookingaminite_booking_date_3i{
+    width:30%;
+    border:2px solid black;
+    /*padding: 10px;*/
+    background-color: white;
+    font-weight: bold;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    border-left: 3px solid rgba(100,0,2000,0.3);
+  }
+
+  th, td {
+    text-align: center;
+    padding: 8px;
+  }
+
+  tr:nth-child(even){background-color: #f2f2f2}
+
+  .first th {
+    background-color: rgba(00,0,200,0.5);
+    color: white;
+  }
+  .second th {
+    background-color: rgba(00,200,00,0.5);
+    color: white;
+  }
+  .third th {
+    background-color: rgba(200,0,00,0.5);
+    color: white;
+  }
+</style>
+
+<div class="row"  style="padding-top: 3%">
+
+<div class="col-lg-3 col-sm-3"></div>
+  <div class="col-lg-6 col-sm-6" id="bg-login" style="box-shadow: 1px 1px 10px 5px rgba(0,0,0,0.2);border:5px solid rgba(0,0,0,0.1);padding: 3%">
+    <div class="row" style="padding-top: 1%">
+      <div class="col-lg-12 col-sm-12" style="text-align: center">
+        <h1> Booking Aminite</h1>
+      </div>
+    </div>
+    <div class="row" style="padding-top:2%">
+      <div class="col-lg-12 col-sm-12" style="text-align:center">
+        <%= image_tag "avatar/pic4.png",style:"width:100px;height:100px;background-color:white;box-shadow:1px 2px 20px black"  %>
+      </div>
+    </div>
+    <%= form_with(model: bookingaminite, local: true) do |form| %>
+      <% if bookingaminite.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(bookingaminite.errors.count, "error") %> prohibited this bookingaminite from being saved:</h2>
+
+          <ul>
+            <% bookingaminite.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="row">
+        <div class="col-lg-12 col-sm-12" >
+          <p class="notice"><%= notice %></p>
+          <p class="alert" style="color:red;font-size: 20px;font-weight: bold;text-align: center"><%= alert %></p>
+        </div>
+      </div>
+
+      <div class="field">
+        <%#= form.label :user_id %>
+        <%= form.text_field :user_id,:value => current_user.id ,:hidden=>"ture",class:"form-control",style:"width:100%"%>
+      </div>
+      <div class="row">
+        <div class="col-lg-12 col-sm-12">
+          <div class="field">
+            <div class="dropdown">
+              <%= form.label :roomsofaminite_id,"Type Of Aminite ",style:"font-weight:bold;font-size:15px" %>
+              <%= form.select :roomsofaminite_id, Roomsofaminite.pluck(:name_of_room,:id).uniq,class:"dropdown-item",style:"border:3px solid black;font-weight:bold;background:rgba(250,50,250,0.1)" %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+
+      <div class="row">
+        <div class="col-lg-12 col-sm-12">
+          <div class="field">
+            <div class="dropdown">
+              <%= form.label :booking_date,style:"font-weight:bold;font-size:15px" %>
+              <%= form.date_select :booking_date ,class:"dropdown-item",style:"border:3px solid black;font-weight:bold;background:rgba(250,50,250,0.1)" %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+
+      <div class="row">
+        <div class="col-lg-12 col-sm-12">
+          <div class="field">
+            <%= form.label :timing ,style:"font-weight:bold;font-size:15px"%>
+            <%#= form.number_field :timing %>
+            <%= select_tag :timing, options_for_select([['5am - 6am',5],['6am - 7am',6],['7am - 8am',7],['8am - 9am',8],['9am - 10am',9],['10am - 11am',10],['11am - 12pm',11],['12pm - 13pm',12],['13pm - 14pm',13],['14pm - 15pm',14],['15pm - 16pm',15],['16pm - 17pm',16],['17pm - 18pm',17],['18pm - 19pm',18],['19pm - 20pm',19],['20pm - 21pm',20],['21pm - 22pm',21],['22pm - 23pm',22]]),class:"dropdown-item",style:"border:3px solid black;font-weight:bold;background:rgba(250,50,250,0.1)"  %>
+          </div>
+        </div>
+      </div>
+      <br>
+
+      <div class="row">
+        <div class="col-lg-6 col-sm-6">
+          <div class="actions">
+            <%= form.submit " Book ",class:"btn btn-success col-lg-12 col-sm-12"%>
+          </div>
+        </div>
+        <div class="col-lg-6 col-sm-6">
+          <%= link_to ' Back ', root_path,class: "btn btn-warning" ,style: "width:100%;color:white"%>
+        </div>
+      </div>
+      <br>
+
+
+  <% end %>
+
+  </div>
+  <div class="col-lg-3 col-sm-3" style="text-align: center">
+    <div class="row">
+      <div class="col-lg-12 col-sm-12">
+        <h6>Occupied slots on </h6>
+        <h5 style="color: red"><%= ((((Time.now).to_date).strftime("%b %d, %Y")).to_s) %></h5>
+      </div>
+    </div>
+    <div class="row" style="padding: 10%">
+      <div class="col-lg-12 col-sm-12" style="text-align: center">
+        <table>
+          <h6>Study Room</h6>
+          <tr class="first">
+            <th>S.no</th>
+            <th>Room/court</th>
+            <th>Timings</th>
+
+          </tr>
+          <%b= Bookingaminite.where("booking_date":(Time.now).to_date,"aminite_id":1).all %>
+          <%i=0 %>
+          <% b.each do |booking| %>
+            <%i=i+1 %>
+            <tr>
+              <td><%= i %></td>
+              <td><%=Roomsofaminite.find(booking.roomsofaminite_id).name_of_room %></td>
+              <td><%= ((booking.timing).to_s)+" - "+(((booking.timing).to_i)+1).to_s %></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+    <div class="row" style="padding: 10%">
+      <div class="col-lg-12 col-sm-12" style="text-align: center">
+        <table>
+          <h6>BasketBall Court</h6>
+          <tr class="second">
+            <th>S.no</th>
+            <th>Room/court</th>
+            <th>Timings</th>
+
+          </tr>
+          <%b= Bookingaminite.where("booking_date":(Time.now).to_date,"aminite_id":2).all %>
+          <%i=0 %>
+          <% b.each do |booking| %>
+            <%i=i+1 %>
+            <tr>
+              <td><%= i %></td>
+              <td><%=Roomsofaminite.find(booking.roomsofaminite_id).name_of_room %></td>
+              <td><%= ((booking.timing).to_s)+" - "+(((booking.timing).to_i)+1).to_s %></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+    <div class="row" style="padding: 10%">
+      <div class="col-lg-12 col-sm-12" style="text-align: center">
+        <table>
+          <h6>Badminton Court </h6>
+          <tr class="third">
+            <th>S.no</th>
+            <th>Room/court</th>
+            <th>Timings</th>
+
+          </tr>
+          <%b= Bookingaminite.where("booking_date":(Time.now).to_date,"aminite_id":3).all %>
+          <%i=0 %>
+          <% b.each do |booking| %>
+            <%i=i+1 %>
+            <tr>
+              <td><%= i %></td>
+              <td><%=Roomsofaminite.find(booking.roomsofaminite_id).name_of_room %></td>
+              <td><%= ((booking.timing).to_s)+" - "+(((booking.timing).to_i)+1).to_s %></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+    <hr>
+    <div class="row" style="padding: 1%">
+      <div class="col-lg-12 col-sm-12" style="padding: 3%">
+        <%=link_to 'Total bookings '+current_user.first_name,residentbookings_path ,class: "btn btn-dark",style: "color:white;padding:2% "%>
+
+      </div>
+      <div class="col-lg-12 col-sm-12">
+        <%=link_to 'All bookings ',bookingaminites_path ,class: "btn btn-info",style: "color:white;padding:2% "%>
+      </div>
+    </div>
+
+
+  </div>
+
+</div>

@@ -1,0 +1,90 @@
+<style>
+  hr.class-5 {
+    background-color: #fff;
+    border-top: 2px dashed #8c8b8b;
+  }
+    span{
+      color:skyblue;
+      font-weight: bold;
+    }
+</style>
+<p id="notice"><%= notice %></p>
+
+
+<div class="container">
+  <div class="row" style="padding-top:3% ">
+    <div class="col-lg-1 col-sm-1"></div>
+    <div class="col-lg-10 col-sm-10">
+      <div class="row">
+        <div class="col-lg-3 col-sm-3"></div>
+        <div class="col-lg-6 col-sm-6" style="border: 5px solid 	#483D8B;padding: 2%">
+          <div class="row" style="padding-top:2%">
+            <div class="col-lg-12 col-sm-12" style="text-align:center">
+              <%= image_tag "avatar/pic4.png",style:"width:100px;height:100px;background-color:white;box-shadow:1px 2px 20px black"  %>
+            </div>
+          </div>
+          <div class="row" style="padding-top: 5%">
+            <div class="col-lg-12 col-sm-12" style="text-align: center">
+              <h4>Booked Aminite</h4>
+              <p><%=a=Aminite.find(Roomsofaminite.find(@bookingaminite.roomsofaminite_id).aminite_id).name_of_aminite  %></p>
+            </div>
+          </div>
+          <hr class="class-5" />
+          <div class="should" style="padding: 5%">
+          <div class="row" style="padding-top: 3%">
+            <div class="col-lg-12 col-sm-12">
+              <h5><span >Booking Id:</span> <%= @bookingaminite.id %></h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12 col-sm-12">
+              <h5><span >Resident Name: </span> <%= User.find(@bookingaminite.user_id).first_name %></h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12 col-sm-12">
+              <h5><span >Aminite Type: </span> <%= a%></h5>
+            </div>
+          </div>
+          <% if a=='study room' %>
+            <div class="row">
+              <div class="col-lg-12 col-sm-12">
+                <h5><span >Room number: </span> <%= @bookingaminite.roomsofaminite_id %></h5>
+              </div>
+            </div>
+            <%else %>
+            <div class="row">
+              <div class="col-lg-12 col-sm-12">
+                <h5><span >Court Number: </span> <%=  @bookingaminite.roomsofaminite_id %></h5>
+              </div>
+            </div>
+          <%end %>
+          <div class="row">
+            <div class="col-lg-12 col-sm-12">
+              <h5><span >Date 0f Booking: </span> <%=  (@bookingaminite.booking_date).strftime("%b %d, %Y") %></h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12 col-sm-12">
+              <h5><span >Timings 0f Booking: </span> <%= ((@bookingaminite.timing).to_s) +" - "+ ((((@bookingaminite.timing).to_i)+1).to_s) %></h5>
+            </div>
+          </div>
+          <div class="row" style="padding: 1%">
+            <div class="col-lg-6 col-sm-6">
+<!--              <h4><span style="color:red">Timings 0f Booking</span> <%#= ((@bookingaminite.timing).to_s) +" - "+ ((((@bookingaminite.timing).to_i)+1).to_s) %></h4>-->
+              <%= link_to 'Edit', edit_bookingaminite_path(@bookingaminite),class:"btn btn-warning",style: "width:100%" %>
+            </div>
+            <div class="col-lg-6 col-sm-6">
+              <%= link_to 'Back', residentbookings_path,class:"btn btn-dark",style: "width:100%;color:white" %>
+            </div>
+          </div>
+</div>
+        </div>
+        <div class="col-lg-3 col-sm-3">
+<!--          Bookingaminite.where("booking_date":(Time.now).to_date)-->
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-1 col-sm-1"></div>
+  </div>
+</div>

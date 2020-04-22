@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :bookingaminites
   resources :aminitebookings
   resources :bookings
   resources :pravites,except:[:show]
@@ -22,7 +23,7 @@ Rails.application.routes.draw do
   get 'search' => 'pravites#search', :as => 'search_page'
   # get 'new',to: 'mainpage#new',as:'add_security'
   # get 'create',to:'mainpage#create',as:'save_security'
-
+  get 'residentbooking',to:'bookingaminites#residentbooking',as:'residentbookings'
   # get "shared_complaints",to:'complaint#sharedcomplaint'
   get 'sharedcomplaints',to:'complaints#sharedcomplaints'
   get 'notifications',to:'complaints#notification'
