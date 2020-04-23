@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   # get "shared_complaints",to:'complaint#sharedcomplaint'
   get 'sharedcomplaints',to:'complaints#sharedcomplaints'
   get 'notifications',to:'complaints#notification'
+  get 'new1',to:'complaints#new1'
   get 'solve/:id',to:'mainpage#solve',as:'solve'
   get 'solvedComplaints',to:'complaints#solved'
 end

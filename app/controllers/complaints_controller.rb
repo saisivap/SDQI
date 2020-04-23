@@ -31,6 +31,9 @@ class ComplaintsController < ApplicationController
     @complaint = Complaint.new
 
   end
+  def new1
+    @notifications=Complaint.where("user_id":current_user.id,"solved":false)
+  end
   def notification
     @notifications=Complaint.where("user_id":current_user.id,"solved":false)
   end
