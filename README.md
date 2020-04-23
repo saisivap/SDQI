@@ -4,9 +4,11 @@ This README would normally document whatever steps are necessary to get the
 application up and running.
 
 Things you may want to cover:
+
 #version
     * Ruby version(2.6.3)
     * Rails version(5.2.4.1)
+    * Bootstrap4
 
 # System dependencies
     * gets follow the Rails Guides by ruby on rails.
@@ -17,16 +19,19 @@ Things you may want to cover:
     * bundle install
     * rails db:create 
     * rails db:migrate
-
+# Adding Bootstrap 
+    * Follow the guide to get bootstrap in project (already added in gem file)
+      https://github.com/twbs/bootstrap-sass
+      https://github.com/twbs/bootstrap-rubygem
 # Database creation in Postgresql(Download Postgresql)
-    * gem 'pg', '>= 0.18', '< 2.0'
+    * gem 'pg', '>= 0.18', '< 2.0' (already added in gem file)
 
 # To initialization Database 
     * rails db:create (you maye get already created ) 
     * rails db:migrate (If their is no any changes in migration file it shows the same )
 
 # How to run the test suite
-    * Check the gem test group must be.
+    * Check the gem test group must be.(already added in gem file)
         group :test do
         gem 'cucumber-rails', :require => false        
         gem 'database_cleaner'
@@ -34,9 +39,9 @@ Things you may want to cover:
         gem 'launchy'
         gem 'rspec-rails'
         end
-    * To Install cucumber 
+    * To Install cucumber (must and should)
         rails generate cucumber:install
-    * To run the test cases
+    * To run the test cases (must and should)
          rails cucumber
 
 # Services (job queues, cache servers, search engines, etc.)
