@@ -8,7 +8,7 @@ Things you may want to cover:
 #version
     * Ruby version(2.6.3)
     * Rails version(5.2.4.1)
-    * Bootstrap4
+    * Bootstrap 4
 
 # System dependencies
     * gets follow the Rails Guides by ruby on rails.
