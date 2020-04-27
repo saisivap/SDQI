@@ -8,7 +8,7 @@ Given("I am sign in") do
   fill_in 'Email',with: @user.email
   fill_in 'Password',with: @user.password
   click_on 'Log in'
-  save_and_open_page
+  # save_and_open_page
 end
 Then("I should see a link of solve") do
   # pending # Write code here that turns the phrase above into concrete actions
@@ -27,5 +27,11 @@ Then("I should see all compliants") do
   # pending # Write code here that turns the phrase above into concrete actions
   page.has_content?('All Compliants')
   click_on 'All Complaints'
+  # save_and_open_page
+end
+Then("I should see Maintenance and able to create") do
+  # pending # Write code here that turns the phrase above into concrete actions
+  page.has_content?('Maintenance')
+  click_on 'Maintenance'
   save_and_open_page
 end
