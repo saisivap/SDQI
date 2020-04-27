@@ -33,5 +33,12 @@ Then("I should see Maintenance and able to create") do
   # pending # Write code here that turns the phrase above into concrete actions
   page.has_content?('Maintenance')
   click_on 'Maintenance'
+  # save_and_open_page
+end
+Then("I should see shared and private maintenance click on shared") do
+  page.has_content?('Shared')
+  page.has_content?('Private')
+  click_on 'Private'
   save_and_open_page
 end
+

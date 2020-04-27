@@ -13,6 +13,14 @@ FactoryBot.define do
     role{"admin"}
 
   end
+  factory :resident2, class: User do
+    email { "security@ait.asia" }
+    password { "sundaypsm" }
+    password_confirmation { "sundaypsm" }
+    admin{false}
+    role{"security"}
+
+  end
 end
 # FactoryBot.define do
 #   factory :complaint,class: Complaint do

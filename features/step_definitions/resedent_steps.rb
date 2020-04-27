@@ -58,4 +58,15 @@ Then("i should see description,Ticket Number") do
   page.has_content?('Ticket Number')
   save_and_open_page
 end
+Then("i can able to see booking on page") do
+  # pending # Write code here that turns the phrase above into concrete actions
+  page.has_content?('Aminite Bookings')
+
+end
+Then("i can add a booking to it") do
+  page.has_content?('Aminite Bookings')
+  click_on 'Aminite Bookings'
+  save_and_open_page
+end
+
 
