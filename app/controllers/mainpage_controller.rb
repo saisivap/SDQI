@@ -1,6 +1,7 @@
 class MainpageController < ApplicationController
   before_action :authenticate_user!
-  before_action :admin_user,only:[:deluser,:residents]
+  # before_action :admin_user,only:[:deluser,:residents]
+  before_action :admin_user,only:[:deluser]
   # debugger
   def main_register
     @complaints=Complaint.where("solved":false).all
