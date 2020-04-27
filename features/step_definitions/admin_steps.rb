@@ -23,3 +23,9 @@ Then("I should click on solve") do
   pending # Write code here that turns the phrase above into concrete actions
 end
 
+Then("I should see all compliants") do
+  # pending # Write code here that turns the phrase above into concrete actions
+  page.has_content?('All Compliants')
+  click_on 'All Complaints'
+  save_and_open_page
+end
