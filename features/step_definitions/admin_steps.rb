@@ -29,9 +29,4 @@ Then("I should see all compliants") do
   click_on 'All Complaints'
   # save_and_open_page
 end
-Then("I should see Maintenance and able to create") do
-  # pending # Write code here that turns the phrase above into concrete actions
-  page.has_content?('Maintenance')
-  click_on 'Maintenance'
-  save_and_open_page
-end
+
